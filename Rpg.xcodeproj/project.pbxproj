@@ -9,10 +9,8 @@
 /* Begin PBXBuildFile section */
 		0AB8CDED1B5CF0D400654563 /* ResourcePath.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0AB8CDEC1B5CF0D400654563 /* ResourcePath.mm */; };
 		0AB8CDF01B5CF0D400654563 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0AB8CDEF1B5CF0D400654563 /* main.cpp */; };
-		0AB8CDF31B5CF0D400654563 /* cute_image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0AB8CDF21B5CF0D400654563 /* cute_image.jpg */; };
-		0AB8CDF51B5CF0D400654563 /* nice_music.ogg in Resources */ = {isa = PBXBuildFile; fileRef = 0AB8CDF41B5CF0D400654563 /* nice_music.ogg */; };
-		0AB8CDF71B5CF0D400654563 /* sansation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0AB8CDF61B5CF0D400654563 /* sansation.ttf */; };
-		0AB8CDF91B5CF0D400654563 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AB8CDF81B5CF0D400654563 /* icon.png */; };
+		0AB8CE011B5CF1C200654563 /* TileMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0AB8CDFF1B5CF1C200654563 /* TileMap.cpp */; };
+		0AD3E48C1B610F3C00546FE6 /* Character.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0AD3E48A1B610F3C00546FE6 /* Character.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,10 +19,10 @@
 		0AB8CDEC1B5CF0D400654563 /* ResourcePath.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ResourcePath.mm; sourceTree = "<group>"; };
 		0AB8CDEE1B5CF0D400654563 /* ResourcePath.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ResourcePath.hpp; sourceTree = "<group>"; };
 		0AB8CDEF1B5CF0D400654563 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		0AB8CDF21B5CF0D400654563 /* cute_image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cute_image.jpg; sourceTree = "<group>"; };
-		0AB8CDF41B5CF0D400654563 /* nice_music.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = nice_music.ogg; sourceTree = "<group>"; };
-		0AB8CDF61B5CF0D400654563 /* sansation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sansation.ttf; sourceTree = "<group>"; };
-		0AB8CDF81B5CF0D400654563 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		0AB8CDFF1B5CF1C200654563 /* TileMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TileMap.cpp; sourceTree = "<group>"; };
+		0AB8CE001B5CF1C200654563 /* TileMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileMap.h; sourceTree = "<group>"; };
+		0AD3E48A1B610F3C00546FE6 /* Character.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Character.cpp; sourceTree = "<group>"; };
+		0AD3E48B1B610F3C00546FE6 /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Character.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +58,10 @@
 				0AB8CDEC1B5CF0D400654563 /* ResourcePath.mm */,
 				0AB8CDEE1B5CF0D400654563 /* ResourcePath.hpp */,
 				0AB8CDEF1B5CF0D400654563 /* main.cpp */,
+				0AD3E48A1B610F3C00546FE6 /* Character.cpp */,
+				0AD3E48B1B610F3C00546FE6 /* Character.h */,
+				0AB8CDFF1B5CF1C200654563 /* TileMap.cpp */,
+				0AB8CE001B5CF1C200654563 /* TileMap.h */,
 				0AB8CDF11B5CF0D400654563 /* Resources */,
 				0AB8CDEA1B5CF0D400654563 /* Supporting Files */,
 			);
@@ -77,10 +79,6 @@
 		0AB8CDF11B5CF0D400654563 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				0AB8CDF21B5CF0D400654563 /* cute_image.jpg */,
-				0AB8CDF41B5CF0D400654563 /* nice_music.ogg */,
-				0AB8CDF61B5CF0D400654563 /* sansation.ttf */,
-				0AB8CDF81B5CF0D400654563 /* icon.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -142,10 +140,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0AB8CDF91B5CF0D400654563 /* icon.png in Resources */,
-				0AB8CDF71B5CF0D400654563 /* sansation.ttf in Resources */,
-				0AB8CDF51B5CF0D400654563 /* nice_music.ogg in Resources */,
-				0AB8CDF31B5CF0D400654563 /* cute_image.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,7 +167,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AB8CDF01B5CF0D400654563 /* main.cpp in Sources */,
+				0AB8CE011B5CF1C200654563 /* TileMap.cpp in Sources */,
 				0AB8CDED1B5CF0D400654563 /* ResourcePath.mm in Sources */,
+				0AD3E48C1B610F3C00546FE6 /* Character.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +315,7 @@
 				0AB8CDFE1B5CF0D400654563 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
