@@ -26,7 +26,7 @@ public:
     void canMoveUp();//Set canMoveUp to true
     void canMoveDown();//Set canMoveDown to true
     
-    void collisionManager(TileMap);
+    void collisionManager(TileMap);//Collision between character and specific tiles
 
     
 private:

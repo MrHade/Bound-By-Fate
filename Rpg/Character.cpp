@@ -28,30 +28,38 @@ sf::Sprite Character::getSprite()
 }
 void Character::moveRight()
 {
+    m_sprite.setTextureRect(sf::IntRect(0,0,100,100));//Puts the correct TextureRect from the char file
+    m_sprite.setScale(-0.32, 0.32);//Character looks to the right
     if(m_canMoveRight)
     {
     m_sprite.move(32,0);
-    m_sprite.setTextureRect(sf::IntRect(0,0,100,100));//Puts the correct TextureRect from the char file
-    m_sprite.setScale(-0.32, 0.32);//Character looks to the right
     }
 }
 void Character::moveLeft()
 {
-    m_sprite.move(-32, 0);
     m_sprite.setTextureRect(sf::IntRect(0,0,100,100));//Puts the correct TextureRect from the char file
     m_sprite.setScale(0.32, 0.32);//Character looks to the left
+    if(m_canMoveLeft)
+    {
+    m_sprite.move(-32, 0);
+    }
 }
 void Character::moveUp()
 {
-    m_sprite.move(0, -32);
     m_sprite.setTextureRect(sf::IntRect(0,100,100,100));//Character looks up
-    
+    if(m_canMoveUp)
+    {
+    m_sprite.move(0, -32);
+    }
 }
 void Character::moveDown()
 {
-    m_sprite.move(0, 32);
     m_sprite.setTextureRect(sf::IntRect(0,200,100,100));//Character looks down
-    
+
+    if(m_canMoveDown)
+    {
+    m_sprite.move(0, 32);
+    }
 }
 //********************************
 void Character::canMoveRight()
@@ -74,11 +82,25 @@ void Character::canMoveDown()
 void Character::collisionManager(TileMap map)
 {
         std::vector<std::vector<int> > vmap = map.getVmap();
-        if(vmap[(m_sprite.getPosition().y)/36][((m_sprite.getPosition().x))/32]==54)//54=Tree
+    
+        //Collision with tiles on the right of character
+        if(vmap[(m_sprite.getPosition().y)/32][((m_sprite.getPosition().x))/32]==54)//54=Tree
         {
             m_canMoveRight=false;
         }
-    //Code here tomorow !
+        //Collision with tiles on the left of character
+        else if (vmap[(m_sprite.getPosition().y)/32][((m_sprite.getPosition().x)-32)/32]==54)
+        {
+            m_canMoveLeft=false;
+        }
+        else if(vmap[((m_sprite.getPosition().y)-32)/32][((m_sprite.getPosition().x)+32)/32]==54)
+        {
+            m_canMoveUp=false;
+        }
+        else if (vmap[((m_sprite.getPosition().y)+32)/32][((m_sprite.getPosition().x))/32]==54)
+        {
+            m_canMoveDown=false;
+        }
     
 }
 
