@@ -28,21 +28,33 @@ int main(int, char const**)
             //Right arrow : move character right
             else if (Keyboard::isKeyPressed(Keyboard::Right))
             {
+                character.collisionManager(map);
                 character.moveRight();
+                character.canMoveRight();
             }
+            //Left arrow : move character left
             else if (Keyboard::isKeyPressed(Keyboard::Left))
             {
+                character.collisionManager(map);
                 character.moveLeft();
+                character.canMoveLeft();
             }
+            //Up arrow : move character up
             else if (Keyboard::isKeyPressed(Keyboard::Up))
             {
+                character.collisionManager(map);
                 character.moveUp();
+                character.canMoveUp();
             }
+            //Down arrow : move character down
             else if (Keyboard::isKeyPressed(Keyboard::Down))
             {
+                character.collisionManager(map);
                 character.moveDown();
+                character.canMoveDown();
             }
         }
+        //Draw the graphics
         window.clear();
         window.draw(map);
         window.draw(character.getSprite());
@@ -51,3 +63,14 @@ int main(int, char const**)
 
     return EXIT_SUCCESS;
 }
+
+
+
+
+
+
+
+
+
+
+

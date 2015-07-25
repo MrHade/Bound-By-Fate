@@ -138,6 +138,10 @@ void TileMap::clear()//Usefull to use with a real time map changing
     vmap.clear();
     
 }
+std::vector<std::vector<int> > TileMap::getVmap()
+{
+    return vmap;
+}
 
 
 

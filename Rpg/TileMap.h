@@ -21,6 +21,7 @@ public:
     //Convert the char values from the multidimentional vector to tiles and texture them
     bool load(std::string textureFile,sf::Vector2u tileSize);//tileSize is the size of the tiles in the tileset
     void clear();
+    std::vector<std::vector<int> > getVmap();
 private:
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const
     {

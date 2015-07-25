@@ -10,6 +10,7 @@
 #define __Rpg__Character__
 #include <string>
 #include <SFML/Graphics.hpp>
+#include "TileMap.h"
 class Character
 {
 public:
@@ -20,9 +21,18 @@ public:
     void moveUp();
     void moveDown();
     
+    void canMoveRight();//Set canMoveRight to true
+    void canMoveLeft();//Set canMoveLeft to true
+    void canMoveUp();//Set canMoveUp to true
+    void canMoveDown();//Set canMoveDown to true
+    
+    void collisionManager(TileMap);
+
+    
 private:
     std::string m_name;
     sf::Sprite m_sprite;
-    sf::Texture m_texture;    
+    sf::Texture m_texture;
+    bool m_canMoveRight,m_canMoveLeft,m_canMoveUp,m_canMoveDown;
 };
 #endif /* defined(__Rpg__Character__) */
