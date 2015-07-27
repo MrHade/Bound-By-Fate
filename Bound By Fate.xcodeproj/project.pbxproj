@@ -14,8 +14,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0AB8CDE71B5CF0D400654563 /* Rpg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rpg.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		0AB8CDEB1B5CF0D400654563 /* Rpg-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Rpg-Info.plist"; sourceTree = "<group>"; };
+		0AB8CDE71B5CF0D400654563 /* Bound By Fate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bound By Fate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0AB8CDEB1B5CF0D400654563 /* Bound By Fate-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bound By Fate-Info.plist"; sourceTree = "<group>"; };
 		0AB8CDEC1B5CF0D400654563 /* ResourcePath.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ResourcePath.mm; sourceTree = "<group>"; };
 		0AB8CDEE1B5CF0D400654563 /* ResourcePath.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ResourcePath.hpp; sourceTree = "<group>"; };
 		0AB8CDEF1B5CF0D400654563 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -47,7 +47,7 @@
 		0AB8CDE81B5CF0D400654563 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0AB8CDE71B5CF0D400654563 /* Rpg.app */,
+				0AB8CDE71B5CF0D400654563 /* Bound By Fate.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -71,7 +71,7 @@
 		0AB8CDEA1B5CF0D400654563 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				0AB8CDEB1B5CF0D400654563 /* Rpg-Info.plist */,
+				0AB8CDEB1B5CF0D400654563 /* Bound By Fate-Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -86,9 +86,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0AB8CDE61B5CF0D400654563 /* Rpg */ = {
+		0AB8CDE61B5CF0D400654563 /* Bound By Fate */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0AB8CDFC1B5CF0D400654563 /* Build configuration list for PBXNativeTarget "Rpg" */;
+			buildConfigurationList = 0AB8CDFC1B5CF0D400654563 /* Build configuration list for PBXNativeTarget "Bound By Fate" */;
 			buildPhases = (
 				0AB8CDE21B5CF0D400654563 /* Sources */,
 				0AB8CDE31B5CF0D400654563 /* Frameworks */,
@@ -99,9 +99,9 @@
 			);
 			dependencies = (
 			);
-			name = Rpg;
+			name = "Bound By Fate";
 			productName = Rpg;
-			productReference = 0AB8CDE71B5CF0D400654563 /* Rpg.app */;
+			productReference = 0AB8CDE71B5CF0D400654563 /* Bound By Fate.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -118,7 +118,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 0AB8CDE11B5CF0D400654563 /* Build configuration list for PBXProject "Rpg" */;
+			buildConfigurationList = 0AB8CDE11B5CF0D400654563 /* Build configuration list for PBXProject "Bound By Fate" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -130,7 +130,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0AB8CDE61B5CF0D400654563 /* Rpg */,
+				0AB8CDE61B5CF0D400654563 /* Bound By Fate */,
 			);
 		};
 /* End PBXProject section */
@@ -283,23 +283,23 @@
 		0AB8CDFD1B5CF0D400654563 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = "Rpg/Rpg-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "Rpg/Bound By Fate-Info.plist";
+				PRODUCT_NAME = "Bound By Fate";
 			};
 			name = Debug;
 		};
 		0AB8CDFE1B5CF0D400654563 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = "Rpg/Rpg-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "Rpg/Bound By Fate-Info.plist";
+				PRODUCT_NAME = "Bound By Fate";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0AB8CDE11B5CF0D400654563 /* Build configuration list for PBXProject "Rpg" */ = {
+		0AB8CDE11B5CF0D400654563 /* Build configuration list for PBXProject "Bound By Fate" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0AB8CDFA1B5CF0D400654563 /* Debug */,
@@ -308,7 +308,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0AB8CDFC1B5CF0D400654563 /* Build configuration list for PBXNativeTarget "Rpg" */ = {
+		0AB8CDFC1B5CF0D400654563 /* Build configuration list for PBXNativeTarget "Bound By Fate" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0AB8CDFD1B5CF0D400654563 /* Debug */,

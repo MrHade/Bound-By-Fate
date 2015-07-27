@@ -108,15 +108,16 @@ bool TileMap::load(std::string textureFile,Vector2u tileSize)
             for(int j(0);j<width;j++)
             {
                 //Pointer to the currentVertex used in m_VertexArray
-                Vertex* currentVertex = &m_VertexArray[(i+j*width)*4];
+                Vertex* currentVertex = &m_VertexArray[(j+i*width)*4];
                 
                 //The number of the actual tile
                 int tileNumber = vmap[i][j];
                 
-                currentVertex[0].position = Vector2f(i*tileSize.x,(j+1)*tileSize.y);
-                currentVertex[1].position = Vector2f(i*tileSize.x,j*tileSize.y);
-                currentVertex[2].position = Vector2f((i+1)*tileSize.x,j*tileSize.y);
-                currentVertex[3].position = Vector2f((i+1)*tileSize.x,(j+1)*tileSize.y);
+                //Set the position of each 4 corner of every tile
+                currentVertex[0].position = Vector2f(j*tileSize.x,i*tileSize.y);
+                currentVertex[1].position = Vector2f((j+1)*tileSize.x,i*tileSize.y);
+                currentVertex[2].position = Vector2f((j+1)*tileSize.x,(i+1)*tileSize.y);
+                currentVertex[3].position = Vector2f(j*tileSize.x,(i+1)*tileSize.y);
                 
                 // find its position in the tileset texture
                 int tu = tileNumber % (m_texture.getSize().x / tileSize.x);
