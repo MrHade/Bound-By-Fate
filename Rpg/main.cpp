@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "TileMap.h"
 #include "Character.h"
+#include <iostream>
 using namespace sf;
 int main(int, char const**)
 {
@@ -30,13 +31,18 @@ int main(int, char const**)
             {
                 character.collisionManager(map);
                 character.moveRight();
-                
+                std::cout<<"Character's current position : ("
+                << character.getSprite().getPosition().x<<","
+                <<character.getSprite().getPosition().y<<")"<<std::endl;
             }
             //Left arrow : move character left
             else if (Keyboard::isKeyPressed(Keyboard::Left))
             {
                 character.collisionManager(map);
                 character.moveLeft();
+                std::cout<<"Character's current position : ("
+                << character.getSprite().getPosition().x<<","
+                <<character.getSprite().getPosition().y<<")"<<std::endl;
                 
             }
             //Up arrow : move character up
@@ -44,6 +50,9 @@ int main(int, char const**)
             {
                 character.collisionManager(map);
                 character.moveUp();
+                std::cout<<"Character's current position : ("
+                << character.getSprite().getPosition().x<<","
+                <<character.getSprite().getPosition().y<<")"<<std::endl;
                 
             }
             //Down arrow : move character down
@@ -51,6 +60,9 @@ int main(int, char const**)
             {
                 character.collisionManager(map);
                 character.moveDown();
+                std::cout<<"Character's current position : ("
+                << character.getSprite().getPosition().x<<","
+                <<character.getSprite().getPosition().y<<")"<<std::endl;
                 
             }
         }

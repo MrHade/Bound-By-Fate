@@ -28,8 +28,8 @@ sf::Sprite Character::getSprite()
 }
 void Character::moveRight()
 {
-    m_sprite.setTextureRect(sf::IntRect(0,0,100,100));//Puts the correct TextureRect from the char file
-    m_sprite.setScale(-0.32, 0.32);//Character looks to the right
+   
+    m_sprite.setTextureRect(sf::IntRect(100,0,-100,100));//FLIPS THE CHARACTER
     if(m_canMoveRight)
     {
     m_sprite.move(32,0);
@@ -38,7 +38,7 @@ void Character::moveRight()
 void Character::moveLeft()
 {
     m_sprite.setTextureRect(sf::IntRect(0,0,100,100));//Puts the correct TextureRect from the char file
-    m_sprite.setScale(0.32, 0.32);//Character looks to the left
+
     if(m_canMoveLeft)
     {
     m_sprite.move(-32, 0);
@@ -84,7 +84,7 @@ void Character::collisionManager(TileMap map)
         std::vector<std::vector<int> > vmap = map.getVmap();
     
         //Collision with tiles on the right of character
-        if(vmap[(m_sprite.getPosition().y)/32][((m_sprite.getPosition().x))/32]==54)//54=Tree
+        if(vmap[(m_sprite.getPosition().y)/32][((m_sprite.getPosition().x)+32)/32]==54)//54=Tree
         {
             m_canMoveRight=false;
         }
@@ -93,7 +93,8 @@ void Character::collisionManager(TileMap map)
         {
             m_canMoveLeft=false;
         }
-        else if(vmap[((m_sprite.getPosition().y)-32)/32][((m_sprite.getPosition().x)+32)/32]==54)
+        //This part is not finish, there is still some bugs...
+        if(vmap[((m_sprite.getPosition().y)-32)/32][((m_sprite.getPosition().x)+32)/32]==54)
         {
             m_canMoveUp=false;
         }
