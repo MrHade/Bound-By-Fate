@@ -5,11 +5,14 @@
 using namespace sf;
 int main(int, char const**)
 {
-    RenderWindow window(VideoMode(720, 460), "RPG");
-    TileMap map;
+    RenderWindow window(VideoMode(720, 460), "Bound By Fate");
+    window.setFramerateLimit(60);
     Character character("Soufiane");
+    TileMap map;
     map.loadFromFile("/Users/mrhade/Desktop/Rpg/Test.map");
     map.load("/Users/mrhade/Desktop/Rpg/dg_grounds32.gif", Vector2u(32,32));
+    
+    View mainView(character.getSprite().getPosition(),sf::Vector2f(720/1.5,460/1.5));
     while (window.isOpen())
     {
         // Process events
@@ -72,6 +75,9 @@ int main(int, char const**)
         character.canMoveUp();
         character.canMoveDown();
         
+        //Center the game view on the character
+        mainView.setCenter(character.getSprite().getPosition());
+        window.setView(mainView);
         //Draw the graphics
         window.clear();
         window.draw(map);
