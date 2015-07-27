@@ -29,7 +29,7 @@ sf::Sprite Character::getSprite()
 void Character::moveRight()
 {
    
-    m_sprite.setTextureRect(sf::IntRect(100,0,-100,100));//FLIPS THE CHARACTER
+    m_sprite.setTextureRect(sf::IntRect(100,0,-100,100));//Flips the character
     if(m_canMoveRight)
     {
     m_sprite.move(32,0);
@@ -83,23 +83,36 @@ void Character::collisionManager(TileMap map)
 {
         std::vector<std::vector<int> > vmap = map.getVmap();
     
+        //If you want to add tiles that provoke collision, put " || numberOfYourTile " after the 54
+        //54=Trees
+        //Don't use else if because the char could be in the middle of 4 tiles so we have to check every collision
+    
         //Collision with tiles on the right of character
-        if(vmap[(m_sprite.getPosition().y)/32][((m_sprite.getPosition().x)+32)/32]==54)//54=Tree
+        if(vmap[(m_sprite.getPosition().y)/32][((m_sprite.getPosition().x)+32)/32]==54 /*add tiles here*/)
         {
             m_canMoveRight=false;
         }
         //Collision with tiles on the left of character
-        else if (vmap[(m_sprite.getPosition().y)/32][((m_sprite.getPosition().x)-32)/32]==54)
+        if (vmap[(m_sprite.getPosition().y)/32][((m_sprite.getPosition().x)-32)/32]==54 /*add tiles here*/)
         {
             m_canMoveLeft=false;
         }
-        //This part is not finish, there is still some bugs...
-        if(vmap[((m_sprite.getPosition().y)-32)/32][((m_sprite.getPosition().x)+32)/32]==54)
+        //Collision with tiles above the character
+        if(vmap[((m_sprite.getPosition().y)-32)/32][(m_sprite.getPosition().x)/32]==54 /*add tiles here*/)
         {
             m_canMoveUp=false;
         }
-        else if (vmap[((m_sprite.getPosition().y)+32)/32][((m_sprite.getPosition().x))/32]==54)
+        //Collision with tiles under the character
+        if (vmap[((m_sprite.getPosition().y)+32)/32][(m_sprite.getPosition().x)/32]==54 /*add tiles here*/)
         {
+            m_canMoveDown=false;
+        }
+        //If the character is on a tile where he's not suppose to be, we block him
+        if (vmap[(m_sprite.getPosition().y)/32][(m_sprite.getPosition().x)/32]==54 /*add tiles here*/)
+        {
+            m_canMoveRight=false;
+            m_canMoveLeft=false;
+            m_canMoveUp=false;
             m_canMoveDown=false;
         }
     
