@@ -10,6 +10,7 @@
 		0AB8CDED1B5CF0D400654563 /* ResourcePath.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0AB8CDEC1B5CF0D400654563 /* ResourcePath.mm */; };
 		0AB8CDF01B5CF0D400654563 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0AB8CDEF1B5CF0D400654563 /* main.cpp */; };
 		0AB8CE011B5CF1C200654563 /* TileMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0AB8CDFF1B5CF1C200654563 /* TileMap.cpp */; };
+		0ACB98961B67C54400EB85AA /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB98911B67936C00EB85AA /* Game.cpp */; };
 		0AD3E48C1B610F3C00546FE6 /* Character.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0AD3E48A1B610F3C00546FE6 /* Character.cpp */; };
 /* End PBXBuildFile section */
 
@@ -21,6 +22,8 @@
 		0AB8CDEF1B5CF0D400654563 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		0AB8CDFF1B5CF1C200654563 /* TileMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TileMap.cpp; sourceTree = "<group>"; };
 		0AB8CE001B5CF1C200654563 /* TileMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileMap.h; sourceTree = "<group>"; };
+		0ACB98911B67936C00EB85AA /* Game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
+		0ACB98921B67936C00EB85AA /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		0AD3E48A1B610F3C00546FE6 /* Character.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Character.cpp; sourceTree = "<group>"; };
 		0AD3E48B1B610F3C00546FE6 /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Character.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -39,7 +42,7 @@
 		0AB8CDDD1B5CF0D400654563 = {
 			isa = PBXGroup;
 			children = (
-				0AB8CDE91B5CF0D400654563 /* Rpg */,
+				0AB8CDE91B5CF0D400654563 /* Source Code */,
 				0AB8CDE81B5CF0D400654563 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,12 +55,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		0AB8CDE91B5CF0D400654563 /* Rpg */ = {
+		0AB8CDE91B5CF0D400654563 /* Source Code */ = {
 			isa = PBXGroup;
 			children = (
 				0AB8CDEC1B5CF0D400654563 /* ResourcePath.mm */,
 				0AB8CDEE1B5CF0D400654563 /* ResourcePath.hpp */,
 				0AB8CDEF1B5CF0D400654563 /* main.cpp */,
+				0ACB98911B67936C00EB85AA /* Game.cpp */,
+				0ACB98921B67936C00EB85AA /* Game.h */,
 				0AD3E48A1B610F3C00546FE6 /* Character.cpp */,
 				0AD3E48B1B610F3C00546FE6 /* Character.h */,
 				0AB8CDFF1B5CF1C200654563 /* TileMap.cpp */,
@@ -65,7 +70,7 @@
 				0AB8CDF11B5CF0D400654563 /* Resources */,
 				0AB8CDEA1B5CF0D400654563 /* Supporting Files */,
 			);
-			path = Rpg;
+			path = "Source Code";
 			sourceTree = "<group>";
 		};
 		0AB8CDEA1B5CF0D400654563 /* Supporting Files */ = {
@@ -170,6 +175,7 @@
 				0AB8CE011B5CF1C200654563 /* TileMap.cpp in Sources */,
 				0AB8CDED1B5CF0D400654563 /* ResourcePath.mm in Sources */,
 				0AD3E48C1B610F3C00546FE6 /* Character.cpp in Sources */,
+				0ACB98961B67C54400EB85AA /* Game.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,7 +289,7 @@
 		0AB8CDFD1B5CF0D400654563 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = "Rpg/Bound By Fate-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Source Code/Bound By Fate-Info.plist";
 				PRODUCT_NAME = "Bound By Fate";
 			};
 			name = Debug;
@@ -291,7 +297,7 @@
 		0AB8CDFE1B5CF0D400654563 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = "Rpg/Bound By Fate-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Source Code/Bound By Fate-Info.plist";
 				PRODUCT_NAME = "Bound By Fate";
 			};
 			name = Release;

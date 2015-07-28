@@ -1,18 +1,28 @@
+//
+//  Game.cpp
+//  Bound By Fate
+//
+//  Created by Soufiane on 28/07/15.
+//  Copyright (c) 2015 Soufiane. All rights reserved.
+//
 #include <SFML/Graphics.hpp>
-#include "TileMap.h"
+#include "Game.h"
 #include "Character.h"
-#include <iostream>
+#include "TileMap.h"
 using namespace sf;
-int main(int, char const**)
+void Game::play()
 {
+    
     RenderWindow window(VideoMode(720, 460), "Bound By Fate");
     window.setFramerateLimit(60);
     Character character("Soufiane");
     TileMap map;
-    map.loadFromFile("/Users/mrhade/Desktop/Rpg/Test.map");
-    map.load("/Users/mrhade/Desktop/Rpg/dg_grounds32.gif", Vector2u(32,32));
+    map.loadFromFile("/Users/mrhade/Documents/C++/Rpg/Game Ressources/Test.map");
+    map.load("/Users/mrhade/Documents/C++/Rpg/Game Ressources/dg_grounds32.gif", Vector2u(32,32));
     
     View mainView(character.getSprite().getPosition(),sf::Vector2f(720/1.5,460/1.5));
+    
+    Vector2i animatedWalk(0,0);//For character's walk animation
     while (window.isOpen())
     {
         // Process events
@@ -23,7 +33,7 @@ int main(int, char const**)
             if (event.type == Event::Closed) {
                 window.close();
             }
-
+            
             // Escape pressed : exit
             else if (Keyboard::isKeyPressed(Keyboard::Escape))
             {
@@ -32,49 +42,40 @@ int main(int, char const**)
             //Right arrow : move character right
             else if (Keyboard::isKeyPressed(Keyboard::Right))
             {
+                animatedWalk.y=48*2;
                 character.collisionManager(map);
                 character.moveRight();
-                std::cout<<"Character's current position : ("
-                << character.getSprite().getPosition().x<<","
-                <<character.getSprite().getPosition().y<<")"<<std::endl;
             }
             //Left arrow : move character left
             else if (Keyboard::isKeyPressed(Keyboard::Left))
             {
+                animatedWalk.y=48;
                 character.collisionManager(map);
                 character.moveLeft();
-                std::cout<<"Character's current position : ("
-                << character.getSprite().getPosition().x<<","
-                <<character.getSprite().getPosition().y<<")"<<std::endl;
-                
             }
             //Up arrow : move character up
             else if (Keyboard::isKeyPressed(Keyboard::Up))
             {
+                animatedWalk.y=48*3;
                 character.collisionManager(map);
                 character.moveUp();
-                std::cout<<"Character's current position : ("
-                << character.getSprite().getPosition().x<<","
-                <<character.getSprite().getPosition().y<<")"<<std::endl;
-                
             }
             //Down arrow : move character down
             else if (Keyboard::isKeyPressed(Keyboard::Down))
             {
+                animatedWalk.y=0;
                 character.collisionManager(map);
                 character.moveDown();
-                std::cout<<"Character's current position : ("
-                << character.getSprite().getPosition().x<<","
-                <<character.getSprite().getPosition().y<<")"<<std::endl;
-                
             }
+            //Animates the character's movements
+            animatedWalk.x += 47;
+            if(animatedWalk.x>=47*2)
+                animatedWalk.x=0;
+           
+            character.getSprite().setTextureRect(IntRect(animatedWalk.x,animatedWalk.y,47,47));
         }
-        
-        character.canMoveRight();
-        character.canMoveLeft();
-        character.canMoveUp();
-        character.canMoveDown();
-        
+        character.canMove();
+
         //Center the game view on the character
         mainView.setCenter(character.getSprite().getPosition());
         window.setView(mainView);
@@ -84,17 +85,6 @@ int main(int, char const**)
         window.draw(character.getSprite());
         window.display();
     }
+    
 
-    return EXIT_SUCCESS;
 }
-
-
-
-
-
-
-
-
-
-
-
