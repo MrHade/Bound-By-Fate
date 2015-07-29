@@ -42,8 +42,6 @@ sf::Sprite& Mobile::getSprite()
 }
 void Mobile::moveRight()
 {
-    
-    //  m_sprite.setTextureRect(sf::IntRect(100,0,-100,100));//Flips the Mobile
     if(m_canMoveRight)
     {
         m_sprite.move(32,0);
@@ -51,8 +49,6 @@ void Mobile::moveRight()
 }
 void Mobile::moveLeft()
 {
-    // m_sprite.setTextureRect(sf::IntRect(0,0,100,100));//Puts the correct TextureRect from the char file
-    
     if(m_canMoveLeft)
     {
         m_sprite.move(-32, 0);
@@ -60,16 +56,13 @@ void Mobile::moveLeft()
 }
 void Mobile::moveUp()
 {
-    //  m_sprite.setTextureRect(sf::IntRect(0,100,100,100));//Mobile looks up
     if(m_canMoveUp)
     {
         m_sprite.move(0, -32);
     }
 }
 void Mobile::moveDown()
-{
-    //  m_sprite.setTextureRect(sf::IntRect(0,200,100,100));//Mobile looks down
-    
+{    
     if(m_canMoveDown)
     {
         m_sprite.move(0, 32);
@@ -124,7 +117,46 @@ void Mobile::collisionWithTileManager(TileMap map)
     
 }
 
-
+void Mobile::collisionWithMobileManager(Mobile mobile2)
+{
+    /*
+    To check collision I simulate a Mobile move and I check if there is a collision when I simulate that movement.
+    If there is a collision during the simulation we don't let the character do that movement.
+    Then we put the character to it's old position again.
+     */
+    
+    //Check if there is a collision when Mobile will go right
+    m_sprite.move(32, 0);//Moves the character to the right to test it
+    if (m_sprite.getGlobalBounds().intersects(mobile2.getSprite().getGlobalBounds()))
+    {
+        m_canMoveRight=false;
+    }
+    m_sprite.move(-32, 0);//End of right collision test
+    
+    //Check if there is a collision when Mobile will go left
+    m_sprite.move(-32, 0);//Moves the character to the left to test it
+    if (m_sprite.getGlobalBounds().intersects(mobile2.getSprite().getGlobalBounds()))
+    {
+        m_canMoveLeft=false;
+    }
+    m_sprite.move(32, 0);//End of left collision test
+    
+    //Check if there is a collision when Mobile will go up
+    m_sprite.move(0, -32);//Moves the character up to test it
+    if (m_sprite.getGlobalBounds().intersects(mobile2.getSprite().getGlobalBounds()))
+    {
+        m_canMoveUp=false;
+    }
+    m_sprite.move(0, 32);//End of up collision test
+    
+    //Check if there is a collision when Mobile will go down
+    m_sprite.move(0, 32);//Moves the character down to test it
+    if (m_sprite.getGlobalBounds().intersects(mobile2.getSprite().getGlobalBounds()))
+    {
+        m_canMoveDown=false;
+    }
+    m_sprite.move(0, -32);//End of down collision test
+}
 
 
 

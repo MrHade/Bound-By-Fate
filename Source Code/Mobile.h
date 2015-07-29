@@ -24,7 +24,9 @@ public:
     void moveDown();
     void canMove();//The mobile can move again
     
-    void collisionWithTileManager(TileMap);//Collision between mobile and specific tiles
+    void collisionWithTileManager(TileMap);//Collision between a mobile and specific tiles
+    void collisionWithMobileManager(Mobile);//Collision between 2 mobile
+
 protected:
     std::string m_name;
     sf::Sprite m_sprite;

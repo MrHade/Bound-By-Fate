@@ -8,3 +8,7 @@
 
 #include "Character.h"
 #include <iostream>
+Character::Character(): Mobile()
+{
+    
+}

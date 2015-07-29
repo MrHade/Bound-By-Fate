@@ -6,6 +6,7 @@
 class Character : public Mobile
 {
 public:
+    Character();
 private:
 
 };

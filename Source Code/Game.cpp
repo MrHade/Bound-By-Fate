@@ -16,15 +16,15 @@ void Game::play()
     
     RenderWindow window(VideoMode(720, 460), "Bound By Fate");
     window.setFramerateLimit(60);
-    Mobile character("Soufiane");
+    Character Kyle;
     Mob moss;
     TileMap map;
     map.loadFromFile("/Users/mrhade/Documents/C++/Rpg/Game Ressources/Test.map");
     map.load("/Users/mrhade/Documents/C++/Rpg/Game Ressources/dg_grounds32.gif", Vector2u(32,32));
     
-    View mainView(character.getSprite().getPosition(),sf::Vector2f(720/1.5,460/1.5));
+    View mainView(Kyle.getSprite().getPosition(),sf::Vector2f(720/1.5,460/1.5));
     
-    Vector2i animatedWalk(0,0);//For character's walk animation
+    Vector2i animatedWalk(0,0);//For Kyle's walk animation
     while (window.isOpen())
     {
         // Process events
@@ -41,54 +41,58 @@ void Game::play()
             {
                 window.close();
             }
-            //Right arrow : move character right
+            //Right arrow : move Kyle right
             else if (Keyboard::isKeyPressed(Keyboard::Right))
             {
                 animatedWalk.y=48*2;
-                character.collisionWithTileManager(map);
-                character.moveRight();
+                Kyle.collisionWithTileManager(map);
+                Kyle.collisionWithMobileManager(moss);
+                Kyle.moveRight();
             }
-            //Left arrow : move character left
+            //Left arrow : move Kyle left
             else if (Keyboard::isKeyPressed(Keyboard::Left))
             {
                 animatedWalk.y=48;
-                character.collisionWithTileManager(map);
-                character.moveLeft();
+                Kyle.collisionWithTileManager(map);
+                Kyle.collisionWithMobileManager(moss);
+                Kyle.moveLeft();
             }
-            //Up arrow : move character up
+            //Up arrow : move Kyle up
             else if (Keyboard::isKeyPressed(Keyboard::Up))
             {
                 animatedWalk.y=48*3;
-                character.collisionWithTileManager(map);
-                character.moveUp();
+                Kyle.collisionWithTileManager(map);
+                Kyle.collisionWithMobileManager(moss);
+                Kyle.moveUp();
             }
-            //Down arrow : move character down
+            //Down arrow : move Kyle down
             else if (Keyboard::isKeyPressed(Keyboard::Down))
             {
                 animatedWalk.y=0;
-                character.collisionWithTileManager(map);
-                character.moveDown();
+                Kyle.collisionWithTileManager(map);
+                Kyle.collisionWithMobileManager(moss);
+                Kyle.moveDown();
             }
             if(Keyboard::isKeyPressed(Keyboard::Right)||Keyboard::isKeyPressed(Keyboard::Left) || //So walk animation only occur
-               Keyboard::isKeyPressed(Keyboard::Up)   ||Keyboard::isKeyPressed(Keyboard::Down))  //when character moved
+               Keyboard::isKeyPressed(Keyboard::Up)   ||Keyboard::isKeyPressed(Keyboard::Down))  //when Kyle moved
             {
-            //Animates the character's movements
+            //Animates the Kyle's movements
             animatedWalk.x += 47;
             if(animatedWalk.x>=47*2)
                 animatedWalk.x=0;
            
-            character.getSprite().setTextureRect(IntRect(animatedWalk.x,animatedWalk.y,47,47));
+            Kyle.getSprite().setTextureRect(IntRect(animatedWalk.x,animatedWalk.y,47,47));
             }
         }
-        character.canMove();
+        Kyle.canMove();
 
-        //Center the game view on the character
-        mainView.setCenter(character.getSprite().getPosition());
+        //Center the game view on the Kyle
+        mainView.setCenter(Kyle.getSprite().getPosition());
         window.setView(mainView);
         //Draw the graphics
         window.clear();
         window.draw(map);
-        window.draw(character.getSprite());
+        window.draw(Kyle.getSprite());
         window.draw(moss.getSprite());
         window.display();
     }
