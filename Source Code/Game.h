@@ -8,11 +8,13 @@
 
 #ifndef __Bound_By_Fate__Game__
 #define __Bound_By_Fate__Game__
-
-#include <stdio.h>
+#include <vector>
+#include "Mob.h"
 class Game
 {
 public:
    static void play();
+private:
+
 };
 #endif /* defined(__Bound_By_Fate__Game__) */

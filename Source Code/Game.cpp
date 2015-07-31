@@ -10,14 +10,17 @@
 #include "Character.h"
 #include "Mob.h"
 #include "TileMap.h"
+
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>       /* time */
+
 using namespace sf;
 void Game::play()
 {
-    
     RenderWindow window(VideoMode(720, 460), "Bound By Fate");
     window.setFramerateLimit(60);
     Character Kyle;
-    Mob moss;
+    Mob moss(160, 320, "/Users/mrhade/Documents/C++/Rpg/Game Ressources/wolfsheet6_0.png");
     TileMap map;
     map.loadFromFile("/Users/mrhade/Documents/C++/Rpg/Game Ressources/Test.map");
     map.load("/Users/mrhade/Documents/C++/Rpg/Game Ressources/dg_grounds32.gif", Vector2u(32,32));
@@ -48,6 +51,12 @@ void Game::play()
                 Kyle.collisionWithTileManager(map);
                 Kyle.collisionWithMobileManager(moss);
                 Kyle.moveRight();
+                Kyle.canMove();
+                
+                //Mob detection test
+                moss.collisionWithTileManager(map);
+                moss.detectMobile(Kyle);
+                moss.canMove();
             }
             //Left arrow : move Kyle left
             else if (Keyboard::isKeyPressed(Keyboard::Left))
@@ -56,6 +65,12 @@ void Game::play()
                 Kyle.collisionWithTileManager(map);
                 Kyle.collisionWithMobileManager(moss);
                 Kyle.moveLeft();
+                Kyle.canMove();
+                
+                //Mob detection test
+                moss.collisionWithTileManager(map);
+                moss.detectMobile(Kyle);
+                moss.canMove();
             }
             //Up arrow : move Kyle up
             else if (Keyboard::isKeyPressed(Keyboard::Up))
@@ -64,6 +79,12 @@ void Game::play()
                 Kyle.collisionWithTileManager(map);
                 Kyle.collisionWithMobileManager(moss);
                 Kyle.moveUp();
+                Kyle.canMove();
+                
+                //Mob detection test
+                moss.collisionWithTileManager(map);
+                moss.detectMobile(Kyle);
+                moss.canMove();
             }
             //Down arrow : move Kyle down
             else if (Keyboard::isKeyPressed(Keyboard::Down))
@@ -72,7 +93,15 @@ void Game::play()
                 Kyle.collisionWithTileManager(map);
                 Kyle.collisionWithMobileManager(moss);
                 Kyle.moveDown();
+                Kyle.canMove();
+                
+                //Mob detection test
+                moss.collisionWithTileManager(map);
+                
+                moss.detectMobile(Kyle);
+                moss.canMove();
             }
+            
             if(Keyboard::isKeyPressed(Keyboard::Right)||Keyboard::isKeyPressed(Keyboard::Left) || //So walk animation only occur
                Keyboard::isKeyPressed(Keyboard::Up)   ||Keyboard::isKeyPressed(Keyboard::Down))  //when Kyle moved
             {
@@ -84,8 +113,7 @@ void Game::play()
             Kyle.getSprite().setTextureRect(IntRect(animatedWalk.x,animatedWalk.y,47,47));
             }
         }
-        Kyle.canMove();
-
+        
         //Center the game view on the Kyle
         mainView.setCenter(Kyle.getSprite().getPosition());
         window.setView(mainView);
@@ -93,6 +121,7 @@ void Game::play()
         window.clear();
         window.draw(map);
         window.draw(Kyle.getSprite());
+       // window.draw(moss.detectionZoneDebug);
         window.draw(moss.getSprite());
         window.display();
     }

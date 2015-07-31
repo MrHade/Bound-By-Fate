@@ -11,12 +11,15 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 #include "Mobile.h"
-class Mob : public  Mobile //"A mob is a computer-controlled non-player character (NPC) in a computer game." Wikipedia
+//"A mob is a computer-controlled non-player character (NPC) in a computer game." Wikipedia
+class Mob : public  Mobile
 {
 public:
-    Mob();
+    Mob(int xPosition,int yPosition, std::string pathToTexture);
+    
+    void detectMobile(Mobile);//Detects a mobile in his detectionZone
+    void trackMobile(Mobile target);//Walks to the target
+    sf::RectangleShape detectionZoneDebug;//used for debugging detection
 private:
-
-
 };
 #endif /* defined(__Bound_By_Fate__Mob__) */
