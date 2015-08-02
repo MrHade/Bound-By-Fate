@@ -15,11 +15,15 @@
 class Mob : public  Mobile
 {
 public:
-    Mob(int xPosition,int yPosition, std::string pathToTexture);
+    Mob(int xPosition,int yPosition,std::string pathTotexture);
     
     void detectMobile(Mobile);//Detects a mobile in his detectionZone
     void trackMobile(Mobile target);//Walks to the target
+    void attack(Mobile target);
+    
     sf::RectangleShape detectionZoneDebug;//used for debugging detection
 private:
+    const unsigned int detectionZoneWidth;
+    const unsigned int detectionZoneHeight;
 };
 #endif /* defined(__Bound_By_Fate__Mob__) */

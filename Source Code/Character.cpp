@@ -8,7 +8,7 @@
 
 #include "Character.h"
 #include <iostream>
-Character::Character(): Mobile()
+Character::Character(std::string pathTotexture): Mobile()
 {
     
 }

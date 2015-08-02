@@ -7,10 +7,11 @@
 //
 
 #include "Mobile.h"
-Mobile::Mobile(std::string m_name)
+using namespace sf;
+Mobile::Mobile(std::string pathTotexture)
 {
     //Setting the Mobile display
-    m_texture.loadFromFile("/Users/mrhade/Documents/C++/Rpg/Game Ressources/italy_wing_walking_by_silvermistanimelover-d8y9dmy.png");
+    m_texture.loadFromFile(pathTotexture);
     m_sprite.setTexture(m_texture);
     m_sprite.setTextureRect(sf::IntRect(0,0,48,48));// Mobile is 24x31
     m_sprite.setScale(0.64,0.64);//Now the Mobile has the same size as the tiles 32x32

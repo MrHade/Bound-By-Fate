@@ -15,7 +15,7 @@
 class Mobile
 {
 public:
-    Mobile(std::string m_name);
+    Mobile(std::string pathTotexture);
     Mobile();
     sf::Sprite& getSprite();
     void moveRight();
@@ -26,7 +26,7 @@ public:
     
     void collisionWithTileManager(TileMap);//Collision between a mobile and specific tiles
     void collisionWithMobileManager(Mobile);//Collision between 2 mobile
-
+    
 protected:
     std::string m_name;
     sf::Sprite m_sprite;

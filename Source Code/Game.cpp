@@ -11,15 +11,14 @@
 #include "Mob.h"
 #include "TileMap.h"
 
-#include <stdlib.h>     /* srand, rand */
-#include <time.h>       /* time */
+
 
 using namespace sf;
 void Game::play()
 {
     RenderWindow window(VideoMode(720, 460), "Bound By Fate");
     window.setFramerateLimit(60);
-    Character Kyle;
+    Character Kyle("/Users/mrhade/Documents/C++/Rpg/Game Ressources/italy_wing_walking_by_silvermistanimelover-d8y9dmy.png");
     Mob moss(160, 320, "/Users/mrhade/Documents/C++/Rpg/Game Ressources/wolfsheet6_0.png");
     TileMap map;
     map.loadFromFile("/Users/mrhade/Documents/C++/Rpg/Game Ressources/Test.map");

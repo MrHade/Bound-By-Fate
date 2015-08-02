@@ -6,7 +6,7 @@
 class Character : public Mobile
 {
 public:
-    Character();
+    Character(std::string pathTotexture);
 private:
 
 };
