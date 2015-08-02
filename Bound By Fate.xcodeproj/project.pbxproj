@@ -77,7 +77,6 @@
 				0AD3E48B1B610F3C00546FE6 /* Character.h */,
 				0AB8CDFF1B5CF1C200654563 /* TileMap.cpp */,
 				0AB8CE001B5CF1C200654563 /* TileMap.h */,
-				0AB8CDF11B5CF0D400654563 /* Resources */,
 				0AB8CDEA1B5CF0D400654563 /* Supporting Files */,
 			);
 			path = "Source Code";
@@ -89,13 +88,6 @@
 				0AB8CDEB1B5CF0D400654563 /* Bound By Fate-Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		0AB8CDF11B5CF0D400654563 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
