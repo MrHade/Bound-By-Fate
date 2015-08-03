@@ -111,7 +111,6 @@ void Game::play()
             Kyle.getSprite().setTextureRect(IntRect(animatedWalk.x,animatedWalk.y,47,47));
             }
         }
-        std::cout<<"("<<moss.initialPosition.x<<","<<moss.initialPosition.y<<")"<<std::endl;
         //Center the game view on the Kyle
         mainView.setCenter(moss.getSprite().getPosition());
         window.setView(mainView);
