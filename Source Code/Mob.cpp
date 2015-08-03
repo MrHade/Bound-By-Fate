@@ -7,12 +7,12 @@
 //
 
 #include "Mob.h"
-#include <stdlib.h>     /* srand, rand */
-#include <time.h>       /* time */
-#include <iostream>
+#include "UsefulTools.h"
 using namespace sf;
 
-Mob::Mob(Vector2f initialPosition,std::string pathToTexture) : Mobile(), detectionZoneWidth(224),detectionZoneHeight(224)
+Mob::Mob(Vector2f initialPosition,std::string pathToTexture) :
+Mobile(), detectionZoneWidth(224),detectionZoneHeight(224),initialPosition(initialPosition),m_isTracking(false),m_isWalking(false)
+
 {
     m_texture.loadFromFile(pathToTexture);
     m_sprite.setTexture(m_texture);
@@ -23,7 +23,7 @@ Mob::Mob(Vector2f initialPosition,std::string pathToTexture) : Mobile(), detecti
     
 }
 
-void Mob::detectMobile(Mobile target)
+void Mob::detectMobile(Mobile target, TileMap map)
 {
     
     detectionZoneDebug.setPosition(((m_sprite.getPosition().x)-96+12), (m_sprite.getPosition().y)-96+16);
@@ -33,15 +33,26 @@ void Mob::detectMobile(Mobile target)
     //If another Mobile enter this zone the current Mobile will see him and can attack him.
     sf::FloatRect detectionZone((m_sprite.getPosition().x)-96+12,(m_sprite.getPosition().y-96+16),detectionZoneWidth,detectionZoneHeight);  //It's not an attribut because mob has a new one after each movements
 
-    if(target.getSprite().getGlobalBounds().intersects(detectionZone))
+    if(target.getSprite().getGlobalBounds().intersects(detectionZone))//If a mobile intersects mob's detection zone
     {
-        trackMobile(target);
+        trackMobile(target);//TRACK HIM !
     }
+    else
+    {
+        //Make him walk SALAH !!! :D
+    }
+    if(!m_isTracking)
+    {
+        goToInitialPosition(map);
+    }
+    m_isTracking=false; // Mob finished tracking
+
 }
 void Mob::trackMobile(Mobile target)
 {
-    srand(time(NULL));
-    if(rand()%2==0)//This will make movements more realistic 
+    m_isTracking=true;//Mob starts tracking
+    
+    if(Random::getIntRandom(0, 1)==0)//This will make movements more realistic
     {
     collisionWithMobileManager(target);
     //If target is above mob move up
@@ -110,11 +121,83 @@ void Mob::trackMobile(Mobile target)
 
 
     }
-
 }
 
 
+void Mob::goToInitialPosition(TileMap map)
+{
+    if(Random::getIntRandom(0, 1)==0)//This will make movements more realistic
+    {
+        collisionWithTileManager(map);
+        //If initial position is above mob move up
+        if (m_canMoveUp && initialPosition.y<m_sprite.getPosition().y)
+        {
+            moveUp();
+            m_sprite.setTextureRect(IntRect(5*32,0,32,64));
+            m_sprite.setScale(0.75,0.5);
+        }
+        //If initial position is under mob move down
+        else if (m_canMoveDown && initialPosition.y>m_sprite.getPosition().y)
+        {
+            moveDown();
+            m_sprite.setTextureRect(IntRect(0,0,32,64));
+            m_sprite.setScale(0.75,0.5);
+        }
+        //If initial position is on the left of mob move left
+        else if (m_canMoveLeft && initialPosition.x < m_sprite.getPosition().x)
+        {
+            moveLeft();
+            m_sprite.setTextureRect(IntRect(10*32,4*64,64,32));
+            m_sprite.setScale(0.5,0.75);
+        }
+        //If initial position is on the right of mob move right
+        else if (m_canMoveRight && initialPosition.x>m_sprite.getPosition().x)
+        {
+            moveRight();
+            m_sprite.setTextureRect(IntRect(10*32,0,64,32));
+            m_sprite.setScale(0.5,0.75);
+            
+        }
+        
+    }
+    else
+    {
+        collisionWithTileManager(map);
+        //If initial position is on the left of mob move left
+        if (m_canMoveLeft && initialPosition.x < m_sprite.getPosition().x)
+        {
+            moveLeft();
+            m_sprite.setTextureRect(IntRect(10*32,4*64,64,32));
+            m_sprite.setScale(0.5,0.75);
+        }
+        //If initial position is on the right of mob move right
+        else if (m_canMoveRight && initialPosition.x>m_sprite.getPosition().x)
+        {
+            moveRight();
+            m_sprite.setTextureRect(IntRect(10*32,0,64,32));
+            m_sprite.setScale(0.5,0.75);
+            
+        }
+        //If initial position is above mob move up
+        else if (m_canMoveUp && initialPosition.y<m_sprite.getPosition().y)
+        {
+            moveUp();
+            m_sprite.setTextureRect(IntRect(5*32,0,32,64));
+            m_sprite.setScale(0.75,0.5);
+        }
+        //If initial position is under mob move down
+        else if (m_canMoveDown && initialPosition.y>m_sprite.getPosition().y)
+        {
+            moveDown();
+            m_sprite.setTextureRect(IntRect(0,0,32,64));
+            m_sprite.setScale(0.75,0.5);
+        }
+        
+        
+    }
+    
 
+}
 
 
 

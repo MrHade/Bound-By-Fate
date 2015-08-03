@@ -10,8 +10,6 @@
 #include "Character.h"
 #include "Mob.h"
 #include "TileMap.h"
-
-#include "UsefulTools.h"
 #include <iostream>
 using namespace sf;
 
@@ -25,7 +23,7 @@ void Game::play()
     map.loadFromFile("Game Ressources/Test.map");
     map.load("Game Ressources/dg_grounds32.gif", Vector2u(32,32));
 
-    View mainView(Kyle.getSprite().getPosition(),sf::Vector2f(720/1.5,460/1.5));
+    View mainView(moss.getSprite().getPosition(),sf::Vector2f(720/1.5,460/1.5));
 
     Vector2i animatedWalk(0,0);//For Kyle's walk animation
     while (window.isOpen())
@@ -55,9 +53,8 @@ void Game::play()
 
                 //Mob detection test
                 moss.collisionWithTileManager(map);
-                moss.detectMobile(Kyle);
+                moss.detectMobile(Kyle, map);
                 moss.canMove();
-                std::cout<< Random::getIntRandom(0, 5);
             }
             //Left arrow : move Kyle left
             else if (Keyboard::isKeyPressed(Keyboard::Left))
@@ -70,7 +67,7 @@ void Game::play()
 
                 //Mob detection test
                 moss.collisionWithTileManager(map);
-                moss.detectMobile(Kyle);
+                moss.detectMobile(Kyle, map);
                 moss.canMove();
             }
             //Up arrow : move Kyle up
@@ -84,7 +81,7 @@ void Game::play()
 
                 //Mob detection test
                 moss.collisionWithTileManager(map);
-                moss.detectMobile(Kyle);
+                moss.detectMobile(Kyle, map);
                 moss.canMove();
             }
             //Down arrow : move Kyle down
@@ -99,7 +96,7 @@ void Game::play()
                 //Mob detection test
                 moss.collisionWithTileManager(map);
 
-                moss.detectMobile(Kyle);
+                moss.detectMobile(Kyle, map);
                 moss.canMove();
             }
 
@@ -114,9 +111,9 @@ void Game::play()
             Kyle.getSprite().setTextureRect(IntRect(animatedWalk.x,animatedWalk.y,47,47));
             }
         }
-
+        std::cout<<"("<<moss.initialPosition.x<<","<<moss.initialPosition.y<<")"<<std::endl;
         //Center the game view on the Kyle
-        mainView.setCenter(Kyle.getSprite().getPosition());
+        mainView.setCenter(moss.getSprite().getPosition());
         window.setView(mainView);
         //Draw the graphics
         window.clear();
