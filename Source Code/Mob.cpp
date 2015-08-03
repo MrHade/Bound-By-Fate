@@ -31,7 +31,7 @@ void Mob::detectMobile(Mobile target)
     detectionZoneDebug.setFillColor(Color::Red);
     
     //If another Mobile enter this zone the current Mobile will see him and can attack him.
-    sf::FloatRect detectionZone((m_sprite.getPosition().x)-96+12,(m_sprite.getPosition().y-96+16),detectionZoneWidth,detectionZoneHeight);
+    sf::FloatRect detectionZone((m_sprite.getPosition().x)-96+12,(m_sprite.getPosition().y-96+16),detectionZoneWidth,detectionZoneHeight);  //It's not an attribut because mob has a new one after each movements
 
     if(target.getSprite().getGlobalBounds().intersects(detectionZone))
     {
