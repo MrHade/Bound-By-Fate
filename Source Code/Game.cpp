@@ -11,15 +11,16 @@
 #include "Mob.h"
 #include "TileMap.h"
 
-
-
+#include "UsefulTools.h"
+#include <iostream>
 using namespace sf;
+
 void Game::play()
 {
     RenderWindow window(VideoMode(720, 460), "Bound By Fate");
     window.setFramerateLimit(60);
     Character Kyle("Game Ressources/italy_wing_walking_by_silvermistanimelover-d8y9dmy.png");
-    Mob moss(160, 320, "Game Ressources/wolfsheet6_0.png");
+    Mob moss(Vector2f(160, 320), "Game Ressources/wolfsheet6_0.png");
     TileMap map;
     map.loadFromFile("Game Ressources/Test.map");
     map.load("Game Ressources/dg_grounds32.gif", Vector2u(32,32));
@@ -56,6 +57,7 @@ void Game::play()
                 moss.collisionWithTileManager(map);
                 moss.detectMobile(Kyle);
                 moss.canMove();
+                std::cout<< Random::getIntRandom(0, 5);
             }
             //Left arrow : move Kyle left
             else if (Keyboard::isKeyPressed(Keyboard::Left))

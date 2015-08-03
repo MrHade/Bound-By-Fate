@@ -12,13 +12,13 @@
 #include <iostream>
 using namespace sf;
 
-Mob::Mob(int xPosition,int yPosition,std::string pathToTexture) : Mobile(), detectionZoneWidth(224),detectionZoneHeight(224)
+Mob::Mob(Vector2f initialPosition,std::string pathToTexture) : Mobile(), detectionZoneWidth(224),detectionZoneHeight(224)
 {
     m_texture.loadFromFile(pathToTexture);
     m_sprite.setTexture(m_texture);
     m_sprite.setTextureRect(IntRect(0,0,32,64));
     m_sprite.setScale(0.75,0.5);
-    m_sprite.setPosition(xPosition,yPosition);//initial position of the mob
+    m_sprite.setPosition(initialPosition.x,initialPosition.y);//initial position of the mob
 
     
 }

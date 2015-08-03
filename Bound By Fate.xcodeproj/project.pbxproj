@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A8D4FD71B6FF48F0011E494 /* UsefulTools.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0A8D4FD51B6FF48F0011E494 /* UsefulTools.cpp */; };
 		0AB8CDED1B5CF0D400654563 /* ResourcePath.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0AB8CDEC1B5CF0D400654563 /* ResourcePath.mm */; };
 		0AB8CDF01B5CF0D400654563 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0AB8CDEF1B5CF0D400654563 /* main.cpp */; };
 		0AB8CE011B5CF1C200654563 /* TileMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0AB8CDFF1B5CF1C200654563 /* TileMap.cpp */; };
@@ -17,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A8D4FD51B6FF48F0011E494 /* UsefulTools.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UsefulTools.cpp; sourceTree = "<group>"; };
+		0A8D4FD61B6FF48F0011E494 /* UsefulTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsefulTools.h; sourceTree = "<group>"; };
 		0AB8CDE71B5CF0D400654563 /* Bound By Fate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bound By Fate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AB8CDEB1B5CF0D400654563 /* Bound By Fate-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bound By Fate-Info.plist"; sourceTree = "<group>"; };
 		0AB8CDEC1B5CF0D400654563 /* ResourcePath.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ResourcePath.mm; sourceTree = "<group>"; };
@@ -77,6 +80,8 @@
 				0AD3E48B1B610F3C00546FE6 /* Character.h */,
 				0AB8CDFF1B5CF1C200654563 /* TileMap.cpp */,
 				0AB8CE001B5CF1C200654563 /* TileMap.h */,
+				0A8D4FD51B6FF48F0011E494 /* UsefulTools.cpp */,
+				0A8D4FD61B6FF48F0011E494 /* UsefulTools.h */,
 				0AB8CDEA1B5CF0D400654563 /* Supporting Files */,
 			);
 			path = "Source Code";
@@ -178,6 +183,7 @@
 				0AB8CE011B5CF1C200654563 /* TileMap.cpp in Sources */,
 				0AB8CDED1B5CF0D400654563 /* ResourcePath.mm in Sources */,
 				0AD3E48C1B610F3C00546FE6 /* Character.cpp in Sources */,
+				0A8D4FD71B6FF48F0011E494 /* UsefulTools.cpp in Sources */,
 				0ACB98961B67C54400EB85AA /* Game.cpp in Sources */,
 				0AC7AE321B68218A001E8260 /* Mobile.cpp in Sources */,
 			);

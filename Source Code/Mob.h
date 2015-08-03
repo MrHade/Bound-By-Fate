@@ -15,7 +15,7 @@
 class Mob : public  Mobile
 {
 public:
-    Mob(int xPosition,int yPosition,std::string pathTotexture);
+    Mob(sf::Vector2f initialPosition,std::string pathTotexture);
     
     void detectMobile(Mobile);//Detects a mobile in his detectionZone
     void trackMobile(Mobile target);//Walks to the target
@@ -23,6 +23,7 @@ public:
     
     sf::RectangleShape detectionZoneDebug;//used for debugging detection
 private:
+    const sf::Vector2f initialPosition;//Spwan position of the mob
     const unsigned int detectionZoneWidth;
     const unsigned int detectionZoneHeight;
 };
