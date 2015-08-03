@@ -25,7 +25,7 @@ Mobile::Mobile(std::string pathTotexture)
 Mobile::Mobile(): m_name("Moss")
 {
     //Setting the Mobile display
-    m_texture.loadFromFile("/Users/mrhade/Documents/C++/Rpg/Game Ressources/italy_wing_walking_by_silvermistanimelover-d8y9dmy.png");
+    m_texture.loadFromFile("Game Ressources/italy_wing_walking_by_silvermistanimelover-d8y9dmy.png");
     m_sprite.setTexture(m_texture);
     m_sprite.setTextureRect(sf::IntRect(0,0,48,48));// Mobile is 24x31
     m_sprite.setScale(0.64,0.64);//Now the Mobile has the same size as the tiles 32x32
@@ -63,7 +63,7 @@ void Mobile::moveUp()
     }
 }
 void Mobile::moveDown()
-{    
+{
     if(m_canMoveDown)
     {
         m_sprite.move(0, 32);
@@ -82,11 +82,11 @@ void Mobile::canMove()
 void Mobile::collisionWithTileManager(TileMap map)
 {
     std::vector<std::vector<int> > vmap = map.getVmap();
-    
+
     //If you want to add tiles that provoke collision, put " || numberOfYourTile " after the 54
     //54=Trees
     //Don't use else if because the char could be in the middle of 4 tiles so we have to check every collision
-    
+
     //Collision with tiles on the right of Mobile
     if(vmap[(m_sprite.getPosition().y)/32][((m_sprite.getPosition().x)+32)/32]==54 /*add tiles here*/)
     {
@@ -115,7 +115,7 @@ void Mobile::collisionWithTileManager(TileMap map)
         m_canMoveUp=false;
         m_canMoveDown=false;
     }
-    
+
 }
 
 void Mobile::collisionWithMobileManager(Mobile mobile2)
@@ -125,7 +125,7 @@ void Mobile::collisionWithMobileManager(Mobile mobile2)
     If there is a collision during the simulation we don't let the character do that movement.
     Then we put the character to it's old position again.
      */
-    
+
     //Check if there is a collision when Mobile will go right
     m_sprite.move(32, 0);//Moves the character to the right to test it
     if (m_sprite.getGlobalBounds().intersects(mobile2.getSprite().getGlobalBounds()))
@@ -133,7 +133,7 @@ void Mobile::collisionWithMobileManager(Mobile mobile2)
         m_canMoveRight=false;
     }
     m_sprite.move(-32, 0);//End of right collision test
-    
+
     //Check if there is a collision when Mobile will go left
     m_sprite.move(-32, 0);//Moves the character to the left to test it
     if (m_sprite.getGlobalBounds().intersects(mobile2.getSprite().getGlobalBounds()))
@@ -141,7 +141,7 @@ void Mobile::collisionWithMobileManager(Mobile mobile2)
         m_canMoveLeft=false;
     }
     m_sprite.move(32, 0);//End of left collision test
-    
+
     //Check if there is a collision when Mobile will go up
     m_sprite.move(0, -32);//Moves the character up to test it
     if (m_sprite.getGlobalBounds().intersects(mobile2.getSprite().getGlobalBounds()))
@@ -149,7 +149,7 @@ void Mobile::collisionWithMobileManager(Mobile mobile2)
         m_canMoveUp=false;
     }
     m_sprite.move(0, 32);//End of up collision test
-    
+
     //Check if there is a collision when Mobile will go down
     m_sprite.move(0, 32);//Moves the character down to test it
     if (m_sprite.getGlobalBounds().intersects(mobile2.getSprite().getGlobalBounds()))
