@@ -11,7 +11,8 @@
 using namespace sf;
 
 Mob::Mob(Vector2f initialPosition,std::string pathToTexture) :
-Mobile(), m_detectionZoneWidth(224),m_detectionZoneHeight(224),m_initialPosition(initialPosition),m_isTracking(false),m_isWalking(false)
+Mobile(), m_detectionZoneWidth(224),m_detectionZoneHeight(224),m_initialPosition(initialPosition),m_isTracking(false),
+m_isWalking(false),m_steps(0),m_maxSteps(10)
 
 {
     m_texture.loadFromFile(pathToTexture);
@@ -35,13 +36,13 @@ void Mob::detectMobile(Mobile target, TileMap map)
 
     if(target.getSprite().getGlobalBounds().intersects(detectionZone))//If a mobile intersects mob's detection zone
     {
-        trackMobile(target);//TRACK HIM !
+        //trackMobile(target);//TRACK HIM !
     }
     else
     {
-        //Make him walk SALAH !!! :D
+        walk(map);
     }
-    if(!m_isTracking)
+    if(!m_isTracking && !m_isWalking)
     {
         goTo(map, m_initialPosition);
     }
@@ -50,6 +51,7 @@ void Mob::detectMobile(Mobile target, TileMap map)
 }
 void Mob::trackMobile(Mobile target)
 {
+    m_isWalking=false;//Mob is not walking now
     m_isTracking=true;//Mob starts tracking
     
     if(Random::getIntRandom(0, 1)==0)//This will make movements more realistic
@@ -198,6 +200,50 @@ void Mob::goTo(TileMap map, Vector2f destination)
     
 
 }
+
+void Mob::walk(TileMap map)
+{
+    m_isWalking=true;
+    collisionWithTileManager(map);
+    if(Random::getIntRandom(0, 3)==0 && m_steps<m_maxSteps)
+    {
+        moveRight();
+        m_steps++;
+
+    }
+    else if (Random::getIntRandom(0, 3)==1 && m_steps<m_maxSteps)
+    {
+        moveLeft();
+        m_steps++;
+
+    }
+    else if (Random::getIntRandom(0, 3)==2 && m_steps<m_maxSteps)
+    {
+        moveUp();
+        m_steps++;
+
+    }
+    else if (Random::getIntRandom(0, 3)==3 && m_steps<m_maxSteps)
+    {
+        moveDown();
+        m_steps++;
+    }
+    else if (m_steps>=10)
+    {
+        goTo(map, m_initialPosition);
+        m_steps=0;
+    }
+    
+}
+
+
+
+
+
+
+
+
+
 
 
 

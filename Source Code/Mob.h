@@ -21,12 +21,16 @@ public:
     void trackMobile(Mobile target);//Walks to the target
     void attack(Mobile target);
     void goTo(TileMap map,sf::Vector2f destination);//The mob will walk to it's initial position
+    void walk(TileMap map);//Will make the mob walk near his initialPosition
+    
     sf::RectangleShape detectionZoneDebug;//used for debugging detection
 
 private:
     const sf::Vector2f m_initialPosition;//Spwan position of the mob
     const unsigned int m_detectionZoneWidth;
     const unsigned int m_detectionZoneHeight;
+    unsigned int m_steps;//Number of steps that the mob made
+    unsigned int m_maxSteps;//The maximum number of steps from the inital position, that a mob should do
     //States
     bool m_isWalking;
     bool m_isTracking;
