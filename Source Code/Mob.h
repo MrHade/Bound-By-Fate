@@ -20,13 +20,13 @@ public:
     void detectMobile(Mobile target, TileMap map);//Detects a mobile in his detectionZone
     void trackMobile(Mobile target);//Walks to the target
     void attack(Mobile target);
-    void goToInitialPosition(TileMap map);//The mob will walk to it's initial position
+    void goTo(TileMap map,sf::Vector2f destination);//The mob will walk to it's initial position
     sf::RectangleShape detectionZoneDebug;//used for debugging detection
-    const sf::Vector2f initialPosition;//Spwan position of the mob
 
 private:
-    const unsigned int detectionZoneWidth;
-    const unsigned int detectionZoneHeight;
+    const sf::Vector2f m_initialPosition;//Spwan position of the mob
+    const unsigned int m_detectionZoneWidth;
+    const unsigned int m_detectionZoneHeight;
     //States
     bool m_isWalking;
     bool m_isTracking;
