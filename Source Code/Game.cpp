@@ -16,10 +16,6 @@ using namespace sf;
 void Game::play()
 {
     
-    RectangleShape debug;
-    debug.setSize(Vector2f(32,32));
-    debug.setPosition(160, 320);
-    debug.setFillColor(Color::Red);
     RenderWindow window(VideoMode(720, 460), "Bound By Fate");
     window.setFramerateLimit(60);
     Character Kyle("Game Ressources/italy_wing_walking_by_silvermistanimelover-d8y9dmy.png");
@@ -56,6 +52,8 @@ void Game::play()
                 Kyle.moveRight();
                 Kyle.canMove();
 
+                moss.IA(Kyle, map);
+
             }
             //Left arrow : move Kyle left
             else if (Keyboard::isKeyPressed(Keyboard::Left))
@@ -65,7 +63,8 @@ void Game::play()
                 Kyle.collisionWithMobileManager(moss);
                 Kyle.moveLeft();
                 Kyle.canMove();
-
+                //Mob detection test
+                moss.IA(Kyle, map);
             }
             //Up arrow : move Kyle up
             else if (Keyboard::isKeyPressed(Keyboard::Up))
@@ -75,6 +74,8 @@ void Game::play()
                 Kyle.collisionWithMobileManager(moss);
                 Kyle.moveUp();
                 Kyle.canMove();
+                
+                moss.IA(Kyle, map);
 
             }
             //Down arrow : move Kyle down
@@ -85,7 +86,8 @@ void Game::play()
                 Kyle.collisionWithMobileManager(moss);
                 Kyle.moveDown();
                 Kyle.canMove();
-
+                
+                moss.IA(Kyle, map);
             }
 
             if(Keyboard::isKeyPressed(Keyboard::Right)||Keyboard::isKeyPressed(Keyboard::Left) || //So walk animation only occur
@@ -99,11 +101,6 @@ void Game::play()
             Kyle.getSprite().setTextureRect(IntRect(animatedWalk.x,animatedWalk.y,47,47));
             }
         }
-        //Mob detection test
-        moss.collisionWithTileManager(map);
-        moss.detectMobile(Kyle, map);
-        moss.canMove();
-        
         //Center the game view on the Kyle
         mainView.setCenter(Kyle.getSprite().getPosition());
         window.setView(mainView);
@@ -111,9 +108,7 @@ void Game::play()
         window.clear();
         window.draw(map);
         window.draw(Kyle.getSprite());
-       // window.draw(moss.detectionZoneDebug);
         window.draw(moss.getSprite());
-        window.draw(debug);
         window.display();
     }
 

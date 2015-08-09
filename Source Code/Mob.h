@@ -17,13 +17,12 @@ class Mob : public  Mobile
 public:
     Mob(sf::Vector2f initialPosition,std::string pathTotexture);
     
-    void detectMobile(Mobile target, TileMap map);//Detects a mobile in his detectionZone
+    void IA(Mobile target, TileMap map);//Makes the mob moving, attacking, tracking...
     void trackMobile(Mobile target);//Walks to the target
     void attack(Mobile target);
     void goTo(TileMap map,sf::Vector2f destination);//The mob will walk to it's initial position
     void walk(TileMap map);//Will make the mob walk near his initialPosition
     
-    sf::RectangleShape detectionZoneDebug;//used for debugging detection
 
 private:
     const sf::Vector2f m_initialPosition;//Spwan position of the mob
@@ -34,6 +33,7 @@ private:
     //States
     bool m_isWalking;
     bool m_isTracking;
+    bool m_isGoingToDestionation;//Is the mob moving to a position on the map?
     
 };
 #endif /* defined(__Bound_By_Fate__Mob__) */
