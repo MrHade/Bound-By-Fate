@@ -161,9 +161,9 @@ void Mobile::collisionWithMobileManager(Mobile mobile2)
     }
     m_sprite.move(0, -32);//End of down collision test
 }
-void Mobile::setPosition(sf::Vector2f newPosition)
+void Mobile::setWPosition(sf::Vector2f newPosition)
 {
-    m_position = newPosition;
+    m_wposition = newPosition;
 }
 void Mobile::setWeapon(Weapon newWeapon)
 {

@@ -22,7 +22,7 @@ void Game::play()
     RenderWindow window(VideoMode(720, 460), "Bound By Fate");
     window.setFramerateLimit(60);
     Character Kyle("Game Ressources/italy_wing_walking_by_silvermistanimelover-d8y9dmy.png");
-    Mob moss(Vector2f(160, 320), "Game Ressources/wolfsheet6_0.png");
+    Mob moss(window.mapPixelToCoords(Vector2i(160, 320)), "Game Ressources/wolfsheet6_0.png");
     TileMap map;
     map.loadFromFile("Game Ressources/Test.map");
     map.load("Game Ressources/dg_grounds32.gif", Vector2u(32,32));
@@ -32,6 +32,9 @@ void Game::play()
     Vector2i animatedWalk(0,0);//For Kyle's walk animation
     while (window.isOpen())
     {
+        //Update the position of mob in the WORLD
+        moss.setWPosition(window.mapPixelToCoords(Vector2i(moss.getSprite().getPosition())));
+        
         // Process events
         sf::Event event;
         while (window.pollEvent(event))
@@ -55,7 +58,7 @@ void Game::play()
                 Kyle.moveRight();
                 Kyle.canMove();
 
-                moss.IA(Kyle, map);
+                moss.IA(window,Kyle, map);
 
             }
             //Left arrow : move Kyle left
@@ -66,8 +69,7 @@ void Game::play()
                 Kyle.collisionWithMobileManager(moss);
                 Kyle.moveLeft();
                 Kyle.canMove();
-                //Mob detection test
-                moss.IA(Kyle, map);
+                moss.IA(window,Kyle, map);
             }
             //Up arrow : move Kyle up
             else if (Keyboard::isKeyPressed(Keyboard::Up))
@@ -78,7 +80,7 @@ void Game::play()
                 Kyle.moveUp();
                 Kyle.canMove();
                 
-                moss.IA(Kyle, map);
+                moss.IA(window,Kyle, map);
 
             }
             //Down arrow : move Kyle down
@@ -90,7 +92,7 @@ void Game::play()
                 Kyle.moveDown();
                 Kyle.canMove();
                 
-                moss.IA(Kyle, map);
+                moss.IA(window,Kyle, map);
             }
 
             if(Keyboard::isKeyPressed(Keyboard::Right)||Keyboard::isKeyPressed(Keyboard::Left) || //So walk animation only occur
@@ -105,14 +107,15 @@ void Game::play()
             }
         }
         //Center the game view on the Kyle
-        mainView.setCenter(Kyle.getSprite().getPosition());
+        mainView.setCenter(moss.getSprite().getPosition());
         window.setView(mainView);
         //Draw the graphics
         window.clear();
         window.draw(map);
-        window.draw(Kyle.getSprite());
-        window.draw(moss.getSprite());
+        window.draw(Kyle);
         window.draw(moss.debugInitalPoint);
+        window.draw(moss);
+        
         window.display();
     }
 

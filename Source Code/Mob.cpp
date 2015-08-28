@@ -28,12 +28,12 @@ m_isWalking(false),m_isGoingToDestionation(false),m_steps(0),m_maxSteps(10)
     
 }
 
-void Mob::IA(Mobile target, TileMap map)
+void Mob::IA(RenderWindow &window,Mobile target, TileMap map)
 {
     
     
     //If another Mobile enter this zone the current Mobile will see him and can attack him.
-    sf::FloatRect detectionZone((m_sprite.getPosition().x)-96+12,(m_sprite.getPosition().y-96+16),1,1);  //It's not an attribut because mob has a new one after each movements
+    sf::FloatRect detectionZone((m_sprite.getPosition().x)-96+12,(m_sprite.getPosition().y-96+16),0,0);  //It's not an attribut because mob has a new one after each movements
  
     //If a mobile intersects mob's detection zone
     if(target.getSprite().getGlobalBounds().intersects(detectionZone) && !m_isGoingToDestionation)
@@ -52,11 +52,12 @@ void Mob::IA(Mobile target, TileMap map)
     {
         collisionWithMobileManager(target);
         collisionWithTileManager(map);
-        goTo(m_initialPosition);
+        goTo(window,m_initialPosition);
     }
     //Reset the states to false for the next frame
     m_isTracking=false;
     m_isWalking=false;
+    canMove();
 
 }
 
@@ -137,34 +138,35 @@ void Mob::trackMobile(Mobile target)
 }
 
 
-void Mob::goTo(Vector2f destination)
+void Mob::goTo(RenderWindow &window,Vector2i destination)
 {
-
-    if(Random::getIntRandom(0, 1)==0)//This will make movements more realistic
+    Vector2f wdestination= window.mapPixelToCoords(destination);//destination in the world
+    
+    if(Random::getIntRandom(0, 1)==0)//This will make the mob take random paths
     {
         //If initial position is above mob move up
-        if (m_canMoveUp && destination.y<m_sprite.getPosition().y)
+        if (m_canMoveUp && wdestination.y<m_wposition.y)
         {
             moveUp();
             m_sprite.setTextureRect(IntRect(5*32,0,32,64));
             m_sprite.setScale(0.75,0.5);
         }
         //If initial position is under mob move down
-        else if (m_canMoveDown && destination.y>m_sprite.getPosition().y)
+        else if (m_canMoveDown && wdestination.y>m_wposition.y)
         {
             moveDown();
             m_sprite.setTextureRect(IntRect(0,0,32,64));
             m_sprite.setScale(0.75,0.5);
         }
         //If initial position is on the left of mob move left
-        else if (m_canMoveLeft && destination.x < m_sprite.getPosition().x)
+        else if (m_canMoveLeft && wdestination.x < m_wposition.x)
         {
             moveLeft();
             m_sprite.setTextureRect(IntRect(10*32,4*64,64,32));
             m_sprite.setScale(0.5,0.75);
         }
         //If initial position is on the right of mob move right
-        else if (m_canMoveRight && destination.x>m_sprite.getPosition().x)
+        else if (m_canMoveRight && wdestination.x>m_wposition.x)
         {
             moveRight();
             m_sprite.setTextureRect(IntRect(10*32,0,64,32));
@@ -172,7 +174,7 @@ void Mob::goTo(Vector2f destination)
             
         }
         //If the mob arrived to destination, stop the function goTo and let's the mob do something else
-        else if (destination.x==m_sprite.getPosition().x && destination.y==m_sprite.getPosition().y)
+        else if (wdestination.x==m_wposition.x && wdestination.y==m_wposition.y)
         {
             m_isGoingToDestionation=false;
         }
@@ -180,14 +182,14 @@ void Mob::goTo(Vector2f destination)
     else
     {
         //If initial position is on the left of mob move left
-        if (m_canMoveLeft && destination.x < m_sprite.getPosition().x)
+        if (m_canMoveLeft && wdestination.x < m_wposition.x)
         {
             moveLeft();
             m_sprite.setTextureRect(IntRect(10*32,4*64,64,32));
             m_sprite.setScale(0.5,0.75);
         }
         //If initial position is on the right of mob move right
-        else if (m_canMoveRight && destination.x>m_sprite.getPosition().x)
+        else if (m_canMoveRight && wdestination.x>m_wposition.x)
         {
             moveRight();
             m_sprite.setTextureRect(IntRect(10*32,0,64,32));
@@ -195,21 +197,21 @@ void Mob::goTo(Vector2f destination)
             
         }
         //If initial position is above mob move up
-        else if (m_canMoveUp && destination.y<m_sprite.getPosition().y)
+        else if (m_canMoveUp && wdestination.y<m_wposition.y)
         {
             moveUp();
             m_sprite.setTextureRect(IntRect(5*32,0,32,64));
             m_sprite.setScale(0.75,0.5);
         }
         //If initial position is under mob move down
-        else if (m_canMoveDown && destination.y>m_sprite.getPosition().y)
+        else if (m_canMoveDown && wdestination.y>m_wposition.y)
         {
             moveDown();
             m_sprite.setTextureRect(IntRect(0,0,32,64));
             m_sprite.setScale(0.75,0.5);
         }
         //If the mob arrived to destination, stop the function goTo and let's the mob do something else
-        else if (destination.x==m_sprite.getPosition().x && destination.y==m_sprite.getPosition().y)
+        else if (wdestination.x==m_wposition.x && wdestination.y==m_wposition.y)
         {
             m_isGoingToDestionation=false;
         }
