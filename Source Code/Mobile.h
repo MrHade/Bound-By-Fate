@@ -8,8 +8,9 @@
 
 #ifndef __Bound_By_Fate__Mobile__
 #define __Bound_By_Fate__Mobile__
-#include <string>
 #include "TileMap.h"
+#include "Weapon.h"
+
 #include <SFML/Graphics.hpp>
 
 class Mobile
@@ -24,13 +25,24 @@ public:
     void moveDown();
     void canMove();//The mobile can move again
     
+    void updatePosition();
+    
     void collisionWithTileManager(TileMap);//Collision between a mobile and specific tiles
     void collisionWithMobileManager(Mobile);//Collision between 2 mobile
     
+    void setPosition(sf::Vector2f position);
+    
+    void setWeapon(Weapon weapon);
+
 protected:
     std::string m_name;
     sf::Sprite m_sprite;
     sf::Texture m_texture;
     bool m_canMoveRight,m_canMoveLeft,m_canMoveUp,m_canMoveDown;
+    sf::Vector2f m_position;// Position of the mobile in the WORLD
+    unsigned int m_health;
+    Weapon m_weapon;
+
+
 };
 #endif /* defined(__Bound_By_Fate__Mobile__) */

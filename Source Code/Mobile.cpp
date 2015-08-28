@@ -8,7 +8,7 @@
 
 #include "Mobile.h"
 using namespace sf;
-Mobile::Mobile(std::string pathTotexture)
+Mobile::Mobile(std::string pathTotexture): m_weapon("Hand",1)
 {
     //Setting the Mobile display
     m_texture.loadFromFile(pathTotexture);
@@ -22,7 +22,7 @@ Mobile::Mobile(std::string pathTotexture)
     m_canMoveUp=true;
     m_canMoveDown=true;
 }
-Mobile::Mobile(): m_name("Moss")
+Mobile::Mobile(): m_name("Moss"), m_weapon("Hand",1)
 {
     //Setting the Mobile display
     m_texture.loadFromFile("Game Ressources/italy_wing_walking_by_silvermistanimelover-d8y9dmy.png");
@@ -77,7 +77,10 @@ void Mobile::canMove()
     m_canMoveUp=true;
     m_canMoveDown=true;
 }
+void Mobile::updatePosition()
+{
 
+}
 //********************************
 void Mobile::collisionWithTileManager(TileMap map)
 {
@@ -105,7 +108,7 @@ void Mobile::collisionWithTileManager(TileMap map)
     //Collision with tiles under the Mobile
     if (vmap[((m_sprite.getPosition().y)+32)/32][(m_sprite.getPosition().x)/32]==54 /*add tiles here*/)
     {
-        m_canMoveDown=false;
+        m_canMoveDown=false; 
     }
     //If the Mobile is on a tile where he's not suppose to be, we block him
     if (vmap[(m_sprite.getPosition().y)/32][(m_sprite.getPosition().x)/32]==54 /*add tiles here*/)
@@ -158,7 +161,14 @@ void Mobile::collisionWithMobileManager(Mobile mobile2)
     }
     m_sprite.move(0, -32);//End of down collision test
 }
-
+void Mobile::setPosition(sf::Vector2f newPosition)
+{
+    m_position = newPosition;
+}
+void Mobile::setWeapon(Weapon newWeapon)
+{
+    m_weapon=newWeapon;
+}
 
 
 

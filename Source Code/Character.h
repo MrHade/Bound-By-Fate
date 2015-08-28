@@ -8,6 +8,6 @@ class Character : public Mobile
 public:
     Character(std::string pathTotexture);
 private:
-
+    
 };
 #endif /* defined(__Rpg__Character__) */

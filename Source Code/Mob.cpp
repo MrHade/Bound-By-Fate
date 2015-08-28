@@ -21,6 +21,10 @@ m_isWalking(false),m_isGoingToDestionation(false),m_steps(0),m_maxSteps(10)
     m_sprite.setScale(0.75,0.5);
     m_sprite.setPosition(initialPosition.x,initialPosition.y);//initial position of the mob
 
+    //Debug
+    debugInitalPoint.setPosition(initialPosition);
+    debugInitalPoint.setSize(Vector2f(32,32));
+    debugInitalPoint.setFillColor(Color::Red);
     
 }
 
@@ -29,33 +33,42 @@ void Mob::IA(Mobile target, TileMap map)
     
     
     //If another Mobile enter this zone the current Mobile will see him and can attack him.
-    sf::FloatRect detectionZone((m_sprite.getPosition().x)-96+12,(m_sprite.getPosition().y-96+16),m_detectionZoneWidth,m_detectionZoneHeight);  //It's not an attribut because mob has a new one after each movements
-
-    if(target.getSprite().getGlobalBounds().intersects(detectionZone) && !m_isGoingToDestionation)//If a mobile intersects mob's detection zone
+    sf::FloatRect detectionZone((m_sprite.getPosition().x)-96+12,(m_sprite.getPosition().y-96+16),1,1);  //It's not an attribut because mob has a new one after each movements
+ 
+    //If a mobile intersects mob's detection zone
+    if(target.getSprite().getGlobalBounds().intersects(detectionZone) && !m_isGoingToDestionation)
     {
+        collisionWithMobileManager(target);
+        collisionWithTileManager(map);
         trackMobile(target);//TRACK HIM !
     }
     else if (!m_isGoingToDestionation)
     {
-        walk(map);
+        collisionWithMobileManager(target);
+        collisionWithTileManager(map);
+        walk();
     }
     if(!m_isTracking && !m_isWalking && m_isGoingToDestionation)
     {
-        goTo(map, m_initialPosition);
+        collisionWithMobileManager(target);
+        collisionWithTileManager(map);
+        goTo(m_initialPosition);
     }
     //Reset the states to false for the next frame
     m_isTracking=false;
     m_isWalking=false;
 
 }
+
 void Mob::trackMobile(Mobile target)
 {
     m_isWalking=false;//Mob is not walking now
     m_isTracking=true;//Mob starts tracking
     
+    collisionWithMobileManager(target);
+    
     if(Random::getIntRandom(0, 1)==0)//This will make movements more realistic
     {
-    collisionWithMobileManager(target);
     //If target is above mob move up
     if (m_canMoveUp && target.getSprite().getPosition().y<m_sprite.getPosition().y)
     {
@@ -89,7 +102,6 @@ void Mob::trackMobile(Mobile target)
     }
     else
     {
-        collisionWithMobileManager(target);
         //If target is on the left of mob move left
         if (m_canMoveLeft && target.getSprite().getPosition().x < m_sprite.getPosition().x)
         {
@@ -125,12 +137,11 @@ void Mob::trackMobile(Mobile target)
 }
 
 
-void Mob::goTo(TileMap map, Vector2f destination)
+void Mob::goTo(Vector2f destination)
 {
 
     if(Random::getIntRandom(0, 1)==0)//This will make movements more realistic
     {
-        collisionWithTileManager(map);
         //If initial position is above mob move up
         if (m_canMoveUp && destination.y<m_sprite.getPosition().y)
         {
@@ -168,7 +179,6 @@ void Mob::goTo(TileMap map, Vector2f destination)
     }
     else
     {
-        collisionWithTileManager(map);
         //If initial position is on the left of mob move left
         if (m_canMoveLeft && destination.x < m_sprite.getPosition().x)
         {
@@ -209,10 +219,9 @@ void Mob::goTo(TileMap map, Vector2f destination)
 
 }
 
-void Mob::walk(TileMap map)
+void Mob::walk()
 {
     m_isWalking=true;
-    collisionWithTileManager(map);
     int randomNumber= Random::getIntRandom(0, 3);
     //Mob will move in a random direction untill he's to far from his initial point
     if(randomNumber==0 && m_steps<m_maxSteps && m_canMoveRight)

@@ -6,10 +6,13 @@
 //  Copyright (c) 2015 Soufiane. All rights reserved.
 //
 #include <SFML/Graphics.hpp>
+#include <Thor/Animations.hpp>
+
 #include "Game.h"
 #include "Character.h"
 #include "Mob.h"
 #include "TileMap.h"
+#include "Weapon.h"
 #include <iostream>
 using namespace sf;
 
@@ -109,6 +112,7 @@ void Game::play()
         window.draw(map);
         window.draw(Kyle.getSprite());
         window.draw(moss.getSprite());
+        window.draw(moss.debugInitalPoint);
         window.display();
     }
 

@@ -14,6 +14,7 @@
 		0AC7AE321B68218A001E8260 /* Mobile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0AC7AE301B68218A001E8260 /* Mobile.cpp */; };
 		0ACB98961B67C54400EB85AA /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB98911B67936C00EB85AA /* Game.cpp */; };
 		0AD3E48C1B610F3C00546FE6 /* Character.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0AD3E48A1B610F3C00546FE6 /* Character.cpp */; };
+		0AE207C61B77E47F00EB6185 /* Weapon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0AE207C41B77E47F00EB6185 /* Weapon.cpp */; };
 		0AF0DAA81B67F17800AF15FD /* Mob.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0AF0DAA61B67F17800AF15FD /* Mob.cpp */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,8 @@
 		0ACB98921B67936C00EB85AA /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		0AD3E48A1B610F3C00546FE6 /* Character.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Character.cpp; sourceTree = "<group>"; };
 		0AD3E48B1B610F3C00546FE6 /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Character.h; sourceTree = "<group>"; };
+		0AE207C41B77E47F00EB6185 /* Weapon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Weapon.cpp; sourceTree = "<group>"; };
+		0AE207C51B77E47F00EB6185 /* Weapon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Weapon.h; sourceTree = "<group>"; };
 		0AF0DAA61B67F17800AF15FD /* Mob.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mob.cpp; sourceTree = "<group>"; };
 		0AF0DAA71B67F17800AF15FD /* Mob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mob.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -76,6 +79,8 @@
 				0AF0DAA71B67F17800AF15FD /* Mob.h */,
 				0AC7AE301B68218A001E8260 /* Mobile.cpp */,
 				0AC7AE311B68218A001E8260 /* Mobile.h */,
+				0AE207C41B77E47F00EB6185 /* Weapon.cpp */,
+				0AE207C51B77E47F00EB6185 /* Weapon.h */,
 				0AD3E48A1B610F3C00546FE6 /* Character.cpp */,
 				0AD3E48B1B610F3C00546FE6 /* Character.h */,
 				0AB8CDFF1B5CF1C200654563 /* TileMap.cpp */,
@@ -185,6 +190,7 @@
 				0AD3E48C1B610F3C00546FE6 /* Character.cpp in Sources */,
 				0A8D4FD71B6FF48F0011E494 /* UsefulTools.cpp in Sources */,
 				0ACB98961B67C54400EB85AA /* Game.cpp in Sources */,
+				0AE207C61B77E47F00EB6185 /* Weapon.cpp in Sources */,
 				0AC7AE321B68218A001E8260 /* Mobile.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

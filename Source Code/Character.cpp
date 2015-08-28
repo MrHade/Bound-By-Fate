@@ -10,5 +10,5 @@
 #include <iostream>
 Character::Character(std::string pathTotexture): Mobile()
 {
-    
+    setWeapon(Weapon("Wooden Sword",10));
 }
