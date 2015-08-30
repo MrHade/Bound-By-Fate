@@ -14,7 +14,8 @@ class Game
 {
 public:
     static void play();
+    void addMob();
 private:
-
+    std::vector<Mob*> activeMobs;
 };
 #endif /* defined(__Bound_By_Fate__Game__) */

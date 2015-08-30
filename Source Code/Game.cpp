@@ -107,7 +107,7 @@ void Game::play()
             }
         }
         //Center the game view on the Kyle
-        mainView.setCenter(moss.getSprite().getPosition());
+        mainView.setCenter(Kyle.getSprite().getPosition());
         window.setView(mainView);
         //Draw the graphics
         window.clear();
