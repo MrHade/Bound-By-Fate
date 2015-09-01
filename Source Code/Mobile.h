@@ -19,6 +19,7 @@ public:
     Mobile(std::string pathTotexture);
     Mobile();
     sf::Sprite& getSprite();
+    sf::Vector2i& getAnimatedWalk();
     void moveRight();
     void moveLeft();
     void moveUp();
@@ -38,9 +39,12 @@ protected:
     std::string m_name;
     sf::Sprite m_sprite;
     sf::Texture m_texture;
+    sf::Vector2i m_animatedWalk;//For character's walk animation
     bool m_canMoveRight,m_canMoveLeft,m_canMoveUp,m_canMoveDown;
     sf::Vector2f m_wposition;// Position of the mobile in the WORLD
+    
     unsigned int m_health;
+    
     Weapon m_weapon;
 
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const //Allows us to draw mobiles

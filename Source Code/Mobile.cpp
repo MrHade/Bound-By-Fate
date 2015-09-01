@@ -8,7 +8,7 @@
 
 #include "Mobile.h"
 using namespace sf;
-Mobile::Mobile(std::string pathTotexture): m_weapon("Hand",1)
+Mobile::Mobile(std::string pathTotexture): m_weapon("Hand",1), m_animatedWalk(Vector2i(0,0))
 {
     //Setting the Mobile display
     m_texture.loadFromFile(pathTotexture);
@@ -22,7 +22,7 @@ Mobile::Mobile(std::string pathTotexture): m_weapon("Hand",1)
     m_canMoveUp=true;
     m_canMoveDown=true;
 }
-Mobile::Mobile(): m_name("Moss"), m_weapon("Hand",1)
+Mobile::Mobile(): m_name("Moss"), m_weapon("Hand",1), m_animatedWalk(Vector2i(0,0))
 {
     //Setting the Mobile display
     m_texture.loadFromFile("Game Ressources/italy_wing_walking_by_silvermistanimelover-d8y9dmy.png");
@@ -37,9 +37,13 @@ Mobile::Mobile(): m_name("Moss"), m_weapon("Hand",1)
     m_canMoveDown=true;
 }
 
-sf::Sprite& Mobile::getSprite()
+Sprite& Mobile::getSprite()
 {
     return m_sprite;
+}
+Vector2i& Mobile::getAnimatedWalk()
+{
+    return m_animatedWalk;
 }
 void Mobile::moveRight()
 {

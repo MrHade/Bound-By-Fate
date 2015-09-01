@@ -2,7 +2,9 @@
 #include <SFML/Graphics.hpp>
 int main(int, char const**)
 {
-    Game::play();
+    Game BoundByFate;
+    BoundByFate.play();
+    
     return EXIT_SUCCESS;
 }
 

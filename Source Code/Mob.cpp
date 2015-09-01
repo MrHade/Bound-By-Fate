@@ -33,7 +33,7 @@ void Mob::IA(RenderWindow &window,Mobile target, TileMap map)
     
     
     //If another Mobile enter this zone the current Mobile will see him and can attack him.
-    sf::FloatRect detectionZone((m_sprite.getPosition().x)-96+12,(m_sprite.getPosition().y-96+16),0,0);  //It's not an attribut because mob has a new one after each movements
+    sf::FloatRect detectionZone((m_sprite.getPosition().x)-96+12,(m_sprite.getPosition().y-96+16),m_detectionZoneWidth,m_detectionZoneHeight);  //It's not an attribut because mob has a new one after each movements
  
     //If a mobile intersects mob's detection zone
     if(target.getSprite().getGlobalBounds().intersects(detectionZone) && !m_isGoingToDestionation)
